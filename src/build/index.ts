@@ -1,7 +1,7 @@
 import { resolve } from "node:path";
 import { parseArgs } from "node:util";
 import { buildHTML } from "./html";
-import { defaults, engines, isValidEngine, loadConfig } from "./config";
+import { configNames, defaults, engines, findConfig, isValidEngine, loadConfig } from "./config";
 import { buildPDF } from "./pdf";
 import { startDev } from "./server";
 import type { Context } from "./types";
@@ -26,14 +26,15 @@ export async function build(args: string[]) {
     allowPositionals: true,
   });
 
-  const config = values.config ? await loadConfig(values.config, defaults) : defaults;
+  const root = process.cwd();
+  const configFile = values.config ?? (await findConfig(root));
+  const config = configFile ? await loadConfig(configFile, defaults) : defaults;
 
   const engine = values.engine ?? config.engine;
   if (!isValidEngine(engine)) {
     throw new Error(`Unknown engine "${engine}", expected one of: ${engines.join(", ")}`);
   }
 
-  const root = process.cwd();
   const outdir = resolve(root, values.outdir ?? config.outdir);
 
   const context: Context = {
@@ -48,6 +49,15 @@ export async function build(args: string[]) {
     html: resolve(outdir, "index.html"),
     css: [],
   };
+
+  if (!(await Bun.file(context.input).exists())) {
+    const hint = positionals[0]
+      ? ""
+      : configFile
+        ? ` (input set in ${configFile})`
+        : ` (no ${configNames[0]} in ${root}: pass --config or an input file)`;
+    throw new Error(`Input not found: ${context.input}${hint}`);
+  }
 
   if (context.dev) {
     await startDev(context);

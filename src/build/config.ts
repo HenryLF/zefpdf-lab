@@ -3,7 +3,7 @@ import type { Config, PdfEngine, UserConfig } from "./types";
 
 export const defaults: Config = {
   engine: "weasyprint",
-  input: "./test/index.tsx",
+  input: "./src/index.tsx",
   output: "output.pdf",
   outdir: "./dist",
   port: 3000,
@@ -17,6 +17,16 @@ export const defaults: Config = {
     ignore: ["node_modules", "dist", ".git"],
   },
 };
+
+/** Looked up in the cwd when no `--config` is given. */
+export const configNames = ["zefpdf-lab.config.ts", "zefpdf-lab.config.js", "zefpdf-lab.config.json"];
+
+export async function findConfig(dir: string) {
+  for (const name of configNames) {
+    const path = resolve(dir, name);
+    if (await Bun.file(path).exists()) return path;
+  }
+}
 
 export const engines: PdfEngine[] = ["weasyprint", "chromium"];
 

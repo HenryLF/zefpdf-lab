@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "zefpdf-lab dev --config zefpdf-lab.config.ts",
-    "build": "zefpdf-lab build --config zefpdf-lab.config.ts",
+    "dev": "zefpdf-lab dev",
+    "build": "zefpdf-lab build",
     "typecheck": "bunx tsc --noEmit"
   },
   "devDependencies": {
