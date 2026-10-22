@@ -7,6 +7,7 @@ export * from "./LaTeX";
 export * from "./Layout";
 export * from "./List";
 export * from "./Pages";
+export * from "./QRCode";
 export * from "./Table";
 export * from "./Titles";
 export * from "./utils";
