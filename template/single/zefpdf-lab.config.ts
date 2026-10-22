@@ -10,7 +10,7 @@ export default defineConfig({
   // bundle and index.html; wiped on every build
   outdir: "dist",
   // "weasyprint" or "chromium", must be installed
-  engine: "weasyprint",
+  engine: "chromium",
   // dev server port (`bun run dev`)
   port: 3000,
   // engine binaries, if not on PATH under these names
