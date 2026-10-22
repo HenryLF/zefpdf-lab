@@ -2,7 +2,7 @@ import { renderToString } from "katex";
 import "katex/dist/katex.min.css";
 import { cx, type ComponentProps } from "./utils";
 export interface LaTeXProps extends ComponentProps {
-  tex: string;
+  tex?: string;
   displayMode?: boolean;
   noFormatNumber?: boolean;
 }
@@ -18,7 +18,7 @@ function formatNumber(s: string) {
 }
 
 export function LaTeX({
-  tex,
+  tex = "",
   displayMode,
   children,
   className,
