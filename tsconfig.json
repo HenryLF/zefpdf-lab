@@ -28,5 +28,7 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false
-  }
+  },
+  // Only type-checks inside a generated project, where zefpdf-lab resolves.
+  "exclude": ["template", "node_modules"]
 }

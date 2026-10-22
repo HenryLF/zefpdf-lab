@@ -1,9 +1,15 @@
 {
   "name": "zefpdf-lab",
-  "module": "src/build/index.ts",
+  "version": "0.1.0",
+  "module": "src/index.ts",
   "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./ui": "./src/ui/index.ts",
+    "./ui/*": "./src/ui/*.tsx"
+  },
   "bin": {
-    "zefpdf": "./src/build/index.ts"
+    "zefpdf-lab": "./src/cli/index.ts"
   },
   "private": true,
   "devDependencies": {
