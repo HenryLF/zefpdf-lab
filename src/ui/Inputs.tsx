@@ -6,6 +6,7 @@ export interface DotLineProps extends ComponentProps {
   count?: number;
   lineHeight?: number | string;
   inline?: boolean;
+  width?: number | string;
 }
 
 export function DotLine({
@@ -13,6 +14,7 @@ export function DotLine({
   lineHeight,
   inline,
   className,
+  width,
   style,
 }: DotLineProps) {
   return (
@@ -21,8 +23,13 @@ export function DotLine({
         <span
           style={mergeStyle(style, {
             "--dotline--lineheight": lineHeight,
+            width,
           })}
-          className={cx("dotline", inline && "dotline--inline", className)}
+          className={cx(
+            "dotline",
+            (inline || width) && "dotline--inline",
+            className,
+          )}
         >
           <span className={"dotline--dots"} />
         </span>,
