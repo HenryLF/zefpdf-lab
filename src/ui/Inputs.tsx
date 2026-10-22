@@ -32,16 +32,12 @@ export function DotLine({
           <span
             style={mergeStyle(style, {
               "--dotline--lineheight": lineHeight,
+              "--dotline--linestyle": lineStyle,
               width: mode === "fixed" ? width : undefined,
             })}
             className={cx("dotline", `dotline--${mode}`, className)}
           >
-            <span
-              className={"dotline--dots"}
-              style={{
-                borderStyle: lineStyle,
-              }}
-            />
+            <span className={"dotline--dots"} />
           </span>
           {mode === "fill" && <br />}
         </>,
