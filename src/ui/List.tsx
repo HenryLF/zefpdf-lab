@@ -1,16 +1,13 @@
 import { createContext } from "preact";
 import "./List.css";
 import { cx, mergeStyle, type ComponentProps } from "./utils";
-interface ListItemProps extends ComponentProps {
+interface ListProps extends ComponentProps {
   marker?: ((s: number) => string) | string;
   indent?: string | number;
   markerSpacing?: string | number;
   count?: number;
 }
 
-export interface OLProps extends ListItemProps {}
-
-export interface ULProps extends ListItemProps {}
 
 type ListContextType = {
   counter: { value: number };
@@ -27,7 +24,7 @@ export function OL({
   style,
   className,
   children,
-}: OLProps) {
+}: ListProps) {
   return (
     <div
       className={cx(className, "list--ol")}
@@ -55,7 +52,7 @@ export function UL({
   style,
   className,
   children,
-}: OLProps) {
+}: ListProps) {
   return (
     <div
       className={cx(className, "list--ul")}
@@ -82,7 +79,7 @@ export function LI({
   children,
   count,
   ...props
-}: ListItemProps) {
+}: ListProps) {
   return (
     <ListContext.Consumer>
       {(ctx) => {
