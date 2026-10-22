@@ -15,6 +15,11 @@
   vertical-align: baseline;
 }
 
+.dotline--inline-block {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
 .dotline--inline > .dotline--dots {
   position: absolute;
   left: 0;
