@@ -5,7 +5,7 @@ export interface TitleProps extends ComponentProps {
   indent?: string | number;
   marker?: string;
   markerSpacing?: string | number;
-  spacing?: string | number;
+  margin?: string | number;
   subsequentSpacing?: string | number;
 }
 
@@ -14,7 +14,7 @@ export function H1({
   indent,
   marker,
   markerSpacing,
-  spacing,
+  margin,
   subsequentSpacing,
   children,
   style,
@@ -29,7 +29,7 @@ export function H1({
         counterIncrement: count ? "none" : undefined,
         "--title--h1--indent": indent,
         "--title--marker-spacing": markerSpacing,
-        "--title--spacing": spacing,
+        "--title--margin": margin,
         "--title--subsequent-margin": subsequentSpacing,
       })}
     >
@@ -43,7 +43,7 @@ export function H2({
   indent,
   marker,
   markerSpacing,
-  spacing,
+  margin,
   subsequentSpacing,
   children,
   style,
@@ -58,7 +58,7 @@ export function H2({
         counterIncrement: count ? "none" : undefined,
         "--title--h2--indent": indent,
         "--title--marker-spacing": markerSpacing,
-        "--title--spacing": spacing,
+        "--title--margin": margin,
         "--title--subsequent-margin": subsequentSpacing,
       })}
     >
@@ -72,7 +72,7 @@ export function H3({
   indent,
   marker,
   markerSpacing,
-  spacing,
+  margin,
   subsequentSpacing,
   children,
   style,
@@ -87,7 +87,7 @@ export function H3({
         counterIncrement: count ? "none" : undefined,
         "--title--h3--indent": indent,
         "--title--marker-spacing": markerSpacing,
-        "--title--spacing": spacing,
+        "--title--margin": margin,
         "--title--subsequent-margin": subsequentSpacing,
       })}
     >
@@ -101,7 +101,7 @@ export function H4({
   indent,
   marker,
   markerSpacing,
-  spacing,
+  margin,
   subsequentSpacing,
   children,
   style,
@@ -116,7 +116,7 @@ export function H4({
         counterIncrement: count ? "none" : undefined,
         "--title--h4--indent": indent,
         "--title--marker-spacing": markerSpacing,
-        "--title--spacing": spacing,
+        "--title--margin": margin,
         "--title--subsequent-margin": subsequentSpacing,
       })}
     >
@@ -130,7 +130,7 @@ export function H5({
   indent,
   marker,
   markerSpacing,
-  spacing,
+  margin,
   subsequentSpacing,
   children,
   style,
@@ -145,7 +145,7 @@ export function H5({
         counterIncrement: count ? "none" : undefined,
         "--title--h5--indent": indent,
         "--title--marker-spacing": markerSpacing,
-        "--title--spacing": spacing,
+        "--title--margin": margin,
         "--title--subsequent-margin": subsequentSpacing,
       })}
     >
@@ -159,7 +159,7 @@ export function H6({
   indent,
   marker,
   markerSpacing,
-  spacing,
+  margin,
   subsequentSpacing,
   children,
   style,
@@ -174,7 +174,7 @@ export function H6({
         counterIncrement: count ? "none" : undefined,
         "--title--h6--indent": indent,
         "--title--marker-spacing": markerSpacing,
-        "--title--spacing": spacing,
+        "--title--margin": margin,
         "--title--subsequent-margin": subsequentSpacing,
       })}
     >

@@ -1,5 +1,5 @@
 .htitle {
-  margin: var(--title--spacing, 15px) 0;
+  margin: var(--title--margin, 15px) 0;
 }
 .htitle:has(+ .htitle) {
   margin-bottom: var(--title--subsequent-margin, 0);
