@@ -25,11 +25,7 @@ export function DotLine({
             "--dotline--lineheight": lineHeight,
             width,
           })}
-          className={cx(
-            "dotline",
-            (inline || width) && "dotline--inline",
-            className,
-          )}
+          className={cx("dotline", inline && "dotline--inline", className)}
         >
           <span className={"dotline--dots"} />
         </span>,
