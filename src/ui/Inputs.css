@@ -8,30 +8,29 @@
   border-bottom: 1px dashed black;
 }
 
-.dotline--inline {
+/* fills the remaining width of the line */
+.dotline--fill {
   display: inline-flex;
   position: relative;
   width: 0;
   vertical-align: baseline;
 }
 
-.dotline--inline-block {
-  display: inline-block;
-  vertical-align: baseline;
-}
-.dotline--inline-block > .dotline--dots {
-  width: 100%;
-}
-
-.dotline--inline > .dotline--dots {
+.dotline--fill > .dotline--dots {
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100vw;
 }
 
-:where(*):has(> .dotline--inline) {
+:where(*):has(> .dotline--fill) {
   overflow: hidden;
+}
+
+/* inline with explicit width */
+.dotline--fixed {
+  display: inline-flex;
+  vertical-align: baseline;
 }
 
 .options > .list--item {

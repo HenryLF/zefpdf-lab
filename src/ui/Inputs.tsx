@@ -9,6 +9,11 @@ export interface DotLineProps extends ComponentProps {
   width?: number | string;
 }
 
+/**
+ * - `inline`: inline, fills the remaining width of the line, then breaks it
+ * - `width`: inline, with the given width
+ * - otherwise: block, full width
+ */
 export function DotLine({
   count = 1,
   lineHeight,
@@ -17,23 +22,22 @@ export function DotLine({
   width,
   style,
 }: DotLineProps) {
+  const mode = inline ? "fill" : width != null ? "fixed" : "block";
   return (
     <>
       {Array(count).fill(
-        <span
-          style={mergeStyle(style, {
-            "--dotline--lineheight": lineHeight,
-            width,
-          })}
-          className={cx(
-            "dotline",
-            inline && "dotline--inline",
-            width && "dotline--inline-block",
-            className,
-          )}
-        >
-          <span className={"dotline--dots"} />
-        </span>,
+        <>
+          <span
+            style={mergeStyle(style, {
+              "--dotline--lineheight": lineHeight,
+              width: mode === "fixed" ? width : undefined,
+            })}
+            className={cx("dotline", `dotline--${mode}`, className)}
+          >
+            <span className={"dotline--dots"} />
+          </span>
+          {mode === "fill" && <br />}
+        </>,
       )}
     </>
   );
