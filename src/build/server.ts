@@ -1,5 +1,5 @@
 import { watch } from "node:fs";
-import { dirname, join, relative, sep } from "node:path";
+import { join, relative, sep } from "node:path";
 import { buildHTML } from "./html";
 import { buildPDF } from "./pdf";
 import type { Context } from "./types";
@@ -80,13 +80,17 @@ export async function startDev(context: Context) {
 
   await rebuild();
 
-  const dir = dirname(context.input);
+  // The whole project, not just the input folder: documents import shared
+  // components and styles from elsewhere in it.
+  const dir = context.root;
   let timer: Timer | undefined;
   watch(dir, { recursive: true }, (_, file) => {
     if (!file) return;
     const abs = join(dir, file);
     const ignored =
       abs == context.output ||
+      // Pdfs of other documents (build-all) are outputs, never sources.
+      abs.endsWith(".pdf") ||
       abs.startsWith(context.outdir + sep) ||
       file.split(sep).some((part) => context.watch.ignore.includes(part));
     if (ignored) return;

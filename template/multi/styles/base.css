@@ -1,0 +1,23 @@
+/* Shared by every document: import it with `import "@styles/base.css"`. */
+@page {
+  size: A4;
+  margin: 2cm;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 11pt;
+  line-height: 1.4;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 2em;
+}
+
+.header img {
+  width: 2.5em;
+  height: 2.5em;
+}

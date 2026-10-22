@@ -1,0 +1,16 @@
+{
+  "name": "{{name}}",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "zefpdf-lab dev",
+    "build": "zefpdf-lab build",
+    "build:all": "zefpdf-lab build-all",
+    "typecheck": "bunx tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "preact": "{{preact}}",
+    "zefpdf-lab": "link:zefpdf-lab"
+  }
+}
