@@ -1,0 +1,24 @@
+{
+  "name": "zefpdf-lab",
+  "module": "src/build/index.ts",
+  "type": "module",
+  "bin": {
+    "zefpdf": "./src/build/index.ts"
+  },
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^7"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^1.0.13",
+    "bun-plugin-tailwind": "^0.1.2",
+    "chart.js": "^4.5.1",
+    "katex": "^0.19.0",
+    "preact": "^11.0.1",
+    "preact-render-to-string": "^6.8.1",
+    "tailwindcss": "^4.3.3"
+  }
+}

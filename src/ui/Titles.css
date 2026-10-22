@@ -1,0 +1,70 @@
+.htitle {
+  margin: var(--title--spacing, 15px) 0;
+}
+.htitle:has(+ .htitle) {
+  margin-bottom: var(--title--subsequent-margin, 0);
+}
+.htitle + .htitle {
+  margin-top: var(--title--subsequent-margin, 0);
+}
+
+.htitle[data-marker]::before {
+  content: attr(data-marker);
+}
+
+.htitle::before {
+  margin-right: var(--title--marker-spacing, 5px);
+}
+
+.title--h1 {
+  counter-increment: count-h1;
+  counter-reset: count-h2 0 count-h3 0 count-h4 0 count-h5 0 count-h6 0;
+  text-indent: var(--title--h1--indent, 0);
+}
+:where(.title--h1)::before {
+  content: counter(count-h1, upper-roman) ".";
+}
+
+.title--h2 {
+  counter-increment: count-h2;
+  counter-reset: count-h3 0 count-h4 0 count-h5 0 count-h6 0;
+  text-indent: var(--title--h2--indent, 0);
+}
+:where(.title--h2)::before {
+  content: counter(count-h2, decimal) ".";
+}
+
+.title--h3 {
+  counter-increment: count-h3;
+  counter-reset: count-h4 0 count-h5 0 count-h6 0;
+  text-indent: var(--title--h3--indent, 0);
+}
+:where(.title--h3)::before {
+  content: counter(count-h3, upper-alpha) ".";
+}
+
+.title--h4 {
+  counter-increment: count-h4;
+  counter-reset: count-h5 0 count-h6 0;
+  text-indent: var(--title--h4--indent, 0);
+}
+:where(.title--h4)::before {
+  content: counter(count-h4, lower-alpha) ".";
+}
+
+.title--h5 {
+  counter-increment: count-h5;
+  counter-reset: count-h6 0;
+  text-indent: var(--title--h5--indent, 0);
+}
+:where(.title--h5)::before {
+  content: counter(count-h5, decimal) ".";
+}
+
+.title--h6 {
+  counter-increment: count-h6;
+  text-indent: var(--title--h6--indent, 0);
+}
+:where(.title--h6)::before {
+  content: counter(count-h6, decimal) ".";
+}

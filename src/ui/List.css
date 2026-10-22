@@ -1,0 +1,7 @@
+.list--item[data-marker] {
+  text-indent: var(--list--indent, 5mm);
+  &::before {
+    content: attr(data-marker);
+    margin-right: var(--list--marker-spacing, 5px);
+  }
+}

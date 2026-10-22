@@ -1,0 +1,32 @@
+.dotline {
+  display: flex;
+  min-height: var(--dotline--lineheight, 1em);
+}
+
+.dotline--dots {
+  flex: 1;
+  border-bottom: 1px dashed black;
+}
+
+.dotline--inline {
+  display: inline-flex;
+  position: relative;
+  width: 0;
+  vertical-align: baseline;
+}
+
+.dotline--inline > .dotline--dots {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+}
+
+:where(*):has(> .dotline--inline) {
+  overflow: hidden;
+}
+
+.options > .list--item {
+  overflow-wrap: break-word;
+  word-break: break-all;
+}

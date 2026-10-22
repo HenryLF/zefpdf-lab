@@ -1,0 +1,28 @@
+.table--container {
+  border-collapse: collapse;
+}
+
+.table--header-row,
+.table--cell-row {
+  &:not(:last-child) {
+    border-bottom: var(--table--border-width, 1px)
+      var(--table--border-style, solid) var(--table--border-color, black);
+  }
+}
+
+.table--header,
+.table--cell {
+  padding: var(--table--cell-padding, 5);
+  &:not(:last-child) {
+    border-bottom: var(--table--border-width, 1px)
+      var(--table--border-style, solid) var(--table--border-color, black);
+  }
+}
+
+.table--header {
+  background-color: var(--table--header-color);
+}
+
+.table--cell {
+  background-color: var(--table--cell-color);
+}
