@@ -1,7 +1,7 @@
 import { createContext } from "preact";
 import "./List.css";
 import { cx, mergeStyle, type ComponentProps } from "./utils";
-interface ListProps extends ComponentProps {
+export interface ListProps extends ComponentProps {
   marker?: ((s: number) => string) | string;
   indent?: string | number;
   markerSpacing?: string | number;
