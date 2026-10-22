@@ -19,7 +19,7 @@
   display: inline-block;
   vertical-align: baseline;
 }
-.dotline--inline > .dotline--dots {
+.dotline--inline-block > .dotline--dots {
   width: 100%;
 }
 
