@@ -19,6 +19,8 @@ done
 
 if [ -d "$DIR/.git" ]; then
   echo "Updating $DIR"
+  # bun link marks the bin executable: never let a mode bit block the merge.
+  git -C "$DIR" config core.fileMode false
   git -C "$DIR" fetch --quiet origin main
   git -C "$DIR" checkout --quiet main
   git -C "$DIR" merge --ff-only --quiet origin/main
@@ -26,6 +28,7 @@ else
   echo "Cloning into $DIR"
   mkdir -p "$(dirname "$DIR")"
   git clone --quiet --branch main "$REPO" "$DIR"
+  git -C "$DIR" config core.fileMode false
 fi
 
 cd "$DIR"
