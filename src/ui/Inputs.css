@@ -13,7 +13,7 @@
   display: inline-flex;
   position: relative;
   width: 0;
-  vertical-align: baseline;
+  vertical-align: middle;
 }
 
 .dotline--fill > .dotline--dots {
@@ -30,7 +30,7 @@
 /* inline with explicit width */
 .dotline--fixed {
   display: inline-flex;
-  vertical-align: baseline;
+  vertical-align: middle;
 }
 
 .options > .list--item {
