@@ -1,4 +1,5 @@
 #!/usr/bin/env bun
+import { assets } from "../assets";
 import { build } from "../build";
 import { buildAll } from "../build/all";
 import { create } from "../create";
@@ -10,6 +11,7 @@ const usage = `Usage:
   zefpdf-lab dev   [input.tsx] [flags]   same as build --dev
   zefpdf-lab build-all [--config file] [--engine name]
                                          every src/**/<doc>/index.tsx to <doc>.pdf beside it
+  zefpdf-lab assets [dir] [--out file]   barrel of every image in dir (default assets)
   zefpdf-lab create <dir> [--type single|multi]
                                          scaffold a new project (asks the type)
   zefpdf-lab update                      install the latest main`;
@@ -18,6 +20,7 @@ const commands: Record<string, (args: string[]) => Promise<void>> = {
   build,
   dev: (args) => build([...args, "--dev"]),
   "build-all": buildAll,
+  assets,
   create,
   update,
 };

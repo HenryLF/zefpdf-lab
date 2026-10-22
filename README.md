@@ -32,7 +32,7 @@ bun run build   # writes my-doc.pdf
 **multi**: one folder per document, sharing code through path aliases.
 
 ```
-assets/        import logo from "@assets/logo.svg"
+assets/        import { logo } from "@assets"   (bun run assets regenerates the barrel)
 styles/        import "@styles/base.css"
 components/    import { Header } from "@components/Header"
 src/<doc>/index.tsx    (any depth: src/reports/q1/index.tsx)
@@ -56,6 +56,7 @@ zefpdf-lab build [input.tsx] [--config file] [--engine weasyprint|chromium]
 zefpdf-lab dev   [input.tsx] [flags]       same as build --dev
 zefpdf-lab build-all [--config file] [--engine name]
                                            every src/**/<doc>/index.tsx to <doc>.pdf beside it
+zefpdf-lab assets [dir] [--out file]       barrel of every image in dir (default assets)
 zefpdf-lab create <dir> [--type single|multi]
 zefpdf-lab update                          install the latest main
 ```

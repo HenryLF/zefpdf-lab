@@ -1,4 +1,4 @@
-import logo from "@assets/logo.svg";
+import { logo } from "@assets";
 import { H1 } from "zefpdf-lab/ui/Titles";
 
 export interface HeaderProps {
