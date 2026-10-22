@@ -7,6 +7,7 @@ export interface DotLineProps extends ComponentProps {
   lineHeight?: number | string;
   inline?: boolean;
   width?: number | string;
+  lineStyle: "dashed" | "dotted" | "none";
 }
 
 /**
@@ -18,6 +19,7 @@ export function DotLine({
   count = 1,
   lineHeight,
   inline,
+  lineStyle,
   className,
   width,
   style,
@@ -34,7 +36,12 @@ export function DotLine({
             })}
             className={cx("dotline", `dotline--${mode}`, className)}
           >
-            <span className={"dotline--dots"} />
+            <span
+              className={"dotline--dots"}
+              style={{
+                borderStyle: lineStyle,
+              }}
+            />
           </span>
           {mode === "fill" && <br />}
         </>,
