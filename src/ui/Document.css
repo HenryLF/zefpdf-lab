@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 @page {
   @top-center {
     content: var(--document-title, "test");
