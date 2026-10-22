@@ -1,6 +1,6 @@
 // Imports of non-code files resolve to their bundled url, next to index.html.
 declare module "*.css" {
-  const s: string;
+  const s: Record<string, string>;
   export default s;
 }
 declare module "*.svg" {
