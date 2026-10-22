@@ -19,6 +19,9 @@
   display: inline-block;
   vertical-align: baseline;
 }
+.dotline--inline > .dotline--dots {
+  width: 100%;
+}
 
 .dotline--inline > .dotline--dots {
   position: absolute;
