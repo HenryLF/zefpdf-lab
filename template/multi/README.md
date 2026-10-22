@@ -15,5 +15,5 @@ bun run dev         # preview the document set in zefpdf-lab.config.ts
 bun run build       # build that document only
 ```
 
-To work on another document, change `input` and `output` in
-`zefpdf-lab.config.ts`, or pass them: `zefpdf-lab dev src/<doc>/index.tsx --out src/<doc>.pdf`.
+To work on another document, change `target` in `zefpdf-lab.config.ts`
+(e.g. `"src/reports/q1"`), or pass the paths: `zefpdf-lab dev src/<doc>/index.tsx --out src/<doc>.pdf`.

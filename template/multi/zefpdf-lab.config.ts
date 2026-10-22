@@ -1,5 +1,7 @@
 import { defineConfig } from "zefpdf-lab";
 
+const target = "src/example";
+
 // Paths are relative to this file. CLI flags (--engine, --out, --outdir,
 // --port) override these values.
 //
@@ -9,9 +11,9 @@ import { defineConfig } from "zefpdf-lab";
 // next to its folder (src/reports/q1/index.tsx -> src/reports/q1.pdf).
 export default defineConfig({
   // entry .tsx whose default export is the document component
-  input: "src/example/index.tsx",
+  input: `${target}/index.tsx`,
   // where the pdf is written
-  output: "src/example.pdf",
+  output: `${target}.pdf`,
   // bundle and index.html; wiped on every build (build:all uses dist/<doc>)
   outdir: "dist",
   // "weasyprint" or "chromium", must be installed
