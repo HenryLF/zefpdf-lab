@@ -5,7 +5,7 @@
 
 .dotline--dots {
   flex: 1;
-  border-bottom: 1px var(--dotline--linestyle, "dotted") black;
+  border-bottom: 1px var(--dotline--linestyle, dotted) black;
 }
 
 /* fills the remaining width of the line */
