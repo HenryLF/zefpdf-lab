@@ -6,7 +6,7 @@
   flex: 1;
   border-bottom: 1px var(--dotline--linestyle, dotted) black;
 
-  min-height: calc(var(--dotline--lineheight, 1em) - 1mm);
+  min-height: calc(var(--dotline--lineheight, 6mm) - 1mm);
   margin-bottom: 1mm;
 }
 
