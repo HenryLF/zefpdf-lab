@@ -13,6 +13,7 @@
 .table--header,
 .table--cell {
   padding: var(--table--cell-padding, 5px);
+  text-align: center;
   &:not(:last-child) {
     border-right: var(--table--border-width, 1px)
       var(--table--border-style, solid) var(--table--border-color, black);
