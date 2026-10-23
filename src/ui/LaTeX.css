@@ -1,0 +1,7 @@
+.latex {
+  margin: 0 5px;
+  display: inline;
+  &:has(> .katex-display) {
+    display: block;
+  }
+}
