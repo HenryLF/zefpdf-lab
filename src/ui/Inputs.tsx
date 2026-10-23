@@ -7,7 +7,7 @@ export interface DotLineProps extends ComponentProps {
   lineHeight?: number | string;
   inline?: boolean;
   width?: number | string;
-  lineStyle: "dashed" | "dotted" | "none";
+  lineStyle?: "dashed" | "dotted" | "none";
 }
 
 /**

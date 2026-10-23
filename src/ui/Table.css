@@ -12,7 +12,7 @@
 
 .table--header,
 .table--cell {
-  padding: var(--table--cell-padding, 5);
+  padding: var(--table--cell-padding, 5px);
   &:not(:last-child) {
     border-bottom: var(--table--border-width, 1px)
       var(--table--border-style, solid) var(--table--border-color, black);
