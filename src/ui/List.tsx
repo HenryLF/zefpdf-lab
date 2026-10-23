@@ -14,7 +14,7 @@ type ListContextType = {
   marker: ((s: number) => string) | string;
 };
 
-const ListContext = createContext<ListContextType | null>(null);
+export const ListContext = createContext<ListContextType | null>(null);
 
 export function OL({
   marker = (k) => `${k}.`,
