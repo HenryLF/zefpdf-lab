@@ -1,11 +1,13 @@
 .dotline {
   display: flex;
-  min-height: var(--dotline--lineheight, 1em);
 }
 
 .dotline--dots {
   flex: 1;
   border-bottom: 1px var(--dotline--linestyle, dotted) black;
+
+  min-height: calc(var(--dotline--lineheight, 1em) - 1mm);
+  margin-bottom: 1mm;
 }
 
 /* fills the remaining width of the line */
