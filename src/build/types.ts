@@ -8,7 +8,7 @@ export type Config = {
   engine: PdfEngine;
   /** entry .tsx whose default export is the document component */
   input: string;
-  /** pdf path */
+  /** pdf file (`*.pdf`), or a directory mirroring `src/` (`src/a/b/index.tsx` -> `<output>/a/b.pdf`) */
   output: string;
   /** where the bundle and index.html are written */
   outdir: string;

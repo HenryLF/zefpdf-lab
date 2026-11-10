@@ -1,7 +1,17 @@
-import { resolve } from "node:path";
+import { mkdir } from "node:fs/promises";
+import { dirname, resolve } from "node:path";
 import { parseArgs } from "node:util";
 import { buildHTML } from "./html";
-import { configNames, defaults, engines, findConfig, isValidEngine, loadConfig } from "./config";
+import {
+  configNames,
+  defaults,
+  engines,
+  findConfig,
+  isPdfFile,
+  isValidEngine,
+  loadConfig,
+  mirroredPdf,
+} from "./config";
 import { buildPDF } from "./pdf";
 import { startDev } from "./server";
 import type { Context } from "./types";
@@ -36,13 +46,15 @@ export async function build(args: string[]) {
   }
 
   const outdir = resolve(root, values.outdir ?? config.outdir);
+  const input = resolve(root, positionals[0] ?? config.input);
+  const output = resolve(root, values.out ?? config.output);
 
   const context: Context = {
     ...config,
     engine,
     dev: values.dev ?? config.dev,
-    input: resolve(root, positionals[0] ?? config.input),
-    output: resolve(root, values.out ?? config.output),
+    input,
+    output: isPdfFile(output) ? output : mirroredPdf(output, input, root),
     outdir,
     port: values.port ? Number(values.port) : config.port,
     root,
@@ -58,6 +70,9 @@ export async function build(args: string[]) {
         : ` (no ${configNames[0]} in ${root}: pass --config or an input file)`;
     throw new Error(`Input not found: ${context.input}${hint}`);
   }
+
+  // The engines do not create missing folders (output dirs mirror src/).
+  await mkdir(dirname(context.output), { recursive: true });
 
   if (context.dev) {
     await startDev(context);

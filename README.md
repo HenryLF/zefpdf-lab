@@ -39,7 +39,7 @@ src/<doc>/index.tsx    (any depth: src/reports/q1/index.tsx)
 ```
 
 ```bash
-bun run build:all   # every src/**/<doc>/index.tsx -> <doc>.pdf beside the folder
+bun run build:all   # every src/**/<doc>/index.tsx -> pdf/**/<doc>.pdf
 bun run dev         # the document set by input/output in zefpdf-lab.config.ts
 bun run build
 ```
@@ -54,8 +54,9 @@ Settings live in `zefpdf-lab.config.ts`, picked up from the current folder
 zefpdf-lab build [input.tsx] [--config file] [--engine weasyprint|chromium]
                  [--out file.pdf] [--outdir dir] [--port n] [--dev]
 zefpdf-lab dev   [input.tsx] [flags]       same as build --dev
-zefpdf-lab build-all [--config file] [--engine name]
-                                           every src/**/<doc>/index.tsx to <doc>.pdf beside it
+zefpdf-lab build-all [--config file] [--engine name] [--out dir]
+                                           every src/**/<doc>/index.tsx to <dir>/**/<doc>.pdf
+                                           (dir: --out, else output in the config, else pdf)
 zefpdf-lab assets [dir] [--out file]       barrel of every image in dir (default assets)
 zefpdf-lab create <dir> [--type single|multi]
 zefpdf-lab update                          install the latest main

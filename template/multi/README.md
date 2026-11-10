@@ -10,7 +10,7 @@ src/<doc>/     one folder per document, entry index.tsx (folders can nest)
 ```
 
 ```bash
-bun run build:all   # every src/**/<doc>/index.tsx -> <doc>.pdf beside the folder
+bun run build:all   # every src/**/<doc>/index.tsx -> pdf/**/<doc>.pdf
 bun run dev         # preview the document set in zefpdf-lab.config.ts
 bun run build       # build that document only
 bun run assets      # regenerate assets/index.tsx after adding or renaming images
@@ -20,4 +20,5 @@ bun run assets      # regenerate assets/index.tsx after adding or renaming image
 from its path: `icons/arrow-left.svg` -> `iconsArrowLeft`.
 
 To work on another document, change `target` in `zefpdf-lab.config.ts`
-(e.g. `"src/reports/q1"`), or pass the paths: `zefpdf-lab dev src/<doc>/index.tsx --out src/<doc>.pdf`.
+(e.g. `"src/reports/q1"`), or pass the entry: `zefpdf-lab dev src/<doc>/index.tsx`.
+Pdfs land in `pdf/` (the config's `output`), mirroring `src/`.

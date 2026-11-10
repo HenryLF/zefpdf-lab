@@ -45,7 +45,7 @@ bun run typecheck   # tsc --noEmit
 Multi-document projects also have:
 
 ```bash
-bun run build:all   # every src/**/<doc>/index.tsx -> src/**/<doc>.pdf
+bun run build:all   # every src/**/<doc>/index.tsx -> pdf/**/<doc>.pdf
 bun run assets      # regenerate assets/index.tsx after adding or renaming images
 ```
 
@@ -55,7 +55,7 @@ The CLI can be called directly. Flags override the config:
 zefpdf-lab build [input.tsx] [--config file] [--engine weasyprint|chromium]
                  [--out file.pdf] [--outdir dir] [--port n] [--dev]
 zefpdf-lab dev   [input.tsx] [flags]        same as build --dev
-zefpdf-lab build-all [--config file] [--engine name]
+zefpdf-lab build-all [--config file] [--engine name] [--out dir]
 zefpdf-lab assets [dir] [--out file]        image barrel (default dir: assets)
 zefpdf-lab update                           update zefpdf-lab itself
 ```
@@ -72,15 +72,18 @@ to that file.
 | key       | meaning                                                   |
 | --------- | --------------------------------------------------------- |
 | `input`   | entry `.tsx` whose default export is the document         |
-| `output`  | pdf path                                                  |
+| `output`  | pdf file (`*.pdf`), or a directory mirroring `src/`       |
 | `outdir`  | bundle + `index.html` (wiped on every build)              |
 | `engine`  | `"chromium"` or `"weasyprint"`, must be installed          |
 | `port`    | dev server port                                           |
 | `paths`   | engine binaries, e.g. `{ chromium: "google-chrome" }`     |
 | `watch`   | `{ debounceMs, ignore }` for dev rebuilds                 |
 
-`build-all` ignores `input` and `output`. Everything else applies to every
-document.
+When `output` is a directory (multi projects default to `pdf`), each document
+gets the pdf mirroring its folder: `src/reports/q1/index.tsx` ->
+`pdf/reports/q1.pdf`. `build-all` ignores `input` and always writes into a
+directory: `output`, or `pdf/` if `output` is a single `.pdf` file. Everything
+else applies to every document.
 
 ## Project layouts
 
@@ -101,7 +104,7 @@ src/<doc>/index.tsx    a document; folders can nest (src/reports/q1/index.tsx)
 - `assets/index.tsx` is generated, so do not edit it: run `bun run assets`. Names
   come from the camelCased path (`icons/arrow-left.svg` -> `iconsArrowLeft`).
 - To point `dev`/`build` at another document, change `target` in the config,
-  or pass `zefpdf-lab dev src/<doc>/index.tsx --out src/<doc>.pdf`.
+  or pass `zefpdf-lab dev src/<doc>/index.tsx`.
 
 ## Components (`zefpdf-lab/ui`)
 

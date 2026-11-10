@@ -1,4 +1,4 @@
-import { dirname, resolve } from "node:path";
+import { basename, dirname, extname, isAbsolute, join, relative, resolve } from "node:path";
 import type { Config, PdfEngine, UserConfig } from "./types";
 
 export const defaults: Config = {
@@ -26,6 +26,23 @@ export async function findConfig(dir: string) {
     const path = resolve(dir, name);
     if (await Bun.file(path).exists()) return path;
   }
+}
+
+/** An `output` ending in `.pdf` is a file; anything else is a directory mirroring `src/`. */
+export function isPdfFile(output: string) {
+  return output.toLowerCase().endsWith(".pdf");
+}
+
+/**
+ * Pdf of `input` inside the directory `dir`, mirroring `src/`:
+ * `src/a/b/index.tsx` -> `<dir>/a/b.pdf`. An input that is not in a folder
+ * under `src/` (e.g. `src/index.tsx`) is named after its file instead.
+ */
+export function mirroredPdf(dir: string, input: string, root: string) {
+  const rel = relative(join(root, "src"), dirname(input));
+  const inSrc = rel != "" && !rel.startsWith("..") && !isAbsolute(rel);
+  const name = inSrc ? rel : basename(input, extname(input));
+  return join(dir, `${name}.pdf`);
 }
 
 export const engines: PdfEngine[] = ["weasyprint", "chromium"];
