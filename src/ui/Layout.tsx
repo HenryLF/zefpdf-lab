@@ -18,6 +18,7 @@ export interface FlexProps extends ComponentProps {
     | "space-between"
     | "space-around"
     | "space-evenly";
+  wrap?: boolean | "reverse";
 }
 
 export function Flex({
@@ -26,6 +27,7 @@ export function Flex({
   justify,
   dir,
   style,
+  wrap = false,
   className,
   ...props
 }: FlexProps) {
@@ -37,9 +39,14 @@ export function Flex({
         flexDirection: dir,
         justifyContent: justify,
         alignItems: align,
+        flexWrap:
+          wrap === true
+            ? "wrap"
+            : wrap === "reverse"
+              ? "wrap-reverse"
+              : "no-wrap",
       })}
       {...props}
     />
   );
 }
-
