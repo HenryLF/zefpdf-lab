@@ -15,7 +15,8 @@ interface TableBaseProps {
     | "groove"
     | "ridge"
     | "inset"
-    | "outset";
+    | "outset"
+    | "none";
 }
 
 export interface TableProps extends ComponentProps, TableBaseProps {}
